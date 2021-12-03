@@ -40,7 +40,7 @@ const Home = () => {
     if (loading) {
         return 'Loading...'
     }
-    console.log(pokemons)
+
     return (
         <>
             <header className="App-header">
