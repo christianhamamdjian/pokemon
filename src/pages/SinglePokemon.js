@@ -22,11 +22,13 @@ const SingleMovie = () => {
   if (isLoading) {
     return <div className='loading'></div>
   }
-  const { abilities, size, } = pokemon
+  const { abilities, /*size,*/ } = pokemon
   const abilitiesList = abilities.map((item, index) => {
     return <li key={index}>{item.ability.name}</li>
   })
+
   const imgUrl = pokemon.sprites.other.dream_world.front_default
+
   return (
     <section className='single-pokemon'>
       <h1>Id: {id}</h1>

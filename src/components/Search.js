@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, {
+    //  useState 
+} from 'react'
 // import { useGlobalContext } from '../context'
 // import { useNavigate } from "react-router-dom"
 import PokemonData from '../components/PokemonData'

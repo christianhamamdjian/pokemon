@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { useGlobalContext } from '../context'
+import React,
+{ //useState, useEffect 
+}
+    from 'react'
+//import { useGlobalContext } from '../context'
 import { Link } from 'react-router-dom'
-import { useHistory } from "react-router-dom"
+//import { useHistory } from "react-router-dom"
 
 const PokemonCard = ({ pokemon }) => {
     const { name, url } = pokemon
