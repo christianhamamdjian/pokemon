@@ -6,13 +6,13 @@ import Pagination from '../components/Pagination'
 import axios from "axios"
 
 const Home = () => {
-    const [pokemon, setPokemon] = useState([])
-    const [currentPageUrl, setCurrentPageUrl] = useState('https://pokeapi.co/api/v2/pokemon')
+    const [pokemons, setPokemons] = useState([])
+    const [currentPageUrl, setCurrentPageUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=20')//1118
     const [nextPagePageUrl, setNextPagePageUrl] = useState('')
     const [prevPagePageUrl, setPrevPagePageUrl] = useState('')
     const [loading, setLoading] = useState(false)
 
-    useEffect(() => {
+    const getaAllPokemons = (currentPageUrl) => {
         setLoading(true)
         let cancel
         axios.get(currentPageUrl, {
@@ -21,9 +21,13 @@ const Home = () => {
             setLoading(false)
             setNextPagePageUrl(res.data.next)
             setPrevPagePageUrl(res.data.previous)
-            setPokemon(res.data.results.map((item) => item.name))
+            setPokemons(res.data.results.map((item) => item))
         })
         return () => cancel()
+    }
+
+    useEffect(() => {
+        getaAllPokemons(currentPageUrl)
     }, [currentPageUrl])
 
     function gotoNextPage() {
@@ -36,17 +40,17 @@ const Home = () => {
     if (loading) {
         return 'Loading...'
     }
-
+    console.log(pokemons)
     return (
         <>
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <Search />
             </header>
-            <PokemonList pokemon={pokemon} />
             <Pagination
                 gotoNextPage={nextPagePageUrl ? gotoNextPage : null}
                 gotoPrevPage={prevPagePageUrl ? gotoPrevPage : null} />
+            <PokemonList pokemons={pokemons} />
         </>
 
     )

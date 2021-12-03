@@ -1,18 +1,20 @@
 import React from 'react'
-import PokemonInfo from '../pages/PokemonInfo'
+import PokemonCard from '../components/PokemonCard'
 
-const PokemonList = ({ pokemon }) => {
+const PokemonList = ({ pokemons }) => {
+
     return (
         <>
             <h1>Pokemon list</h1>
-            {pokemon.map((item, index) => {
-                return (
-                    <div key={index}>
-                        {item}
-                    </div>
-                )
-            })}
-            <PokemonInfo />
+            <section className="pokemons">
+                {pokemons.map((pokemon, index) => {
+                    return (
+                        <div key={index}>
+                            <PokemonCard pokemon={pokemon} />
+                        </div>
+                    )
+                })}
+            </section>
         </>
     )
 }
