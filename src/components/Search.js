@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PokemonData from '../components/PokemonData'
+import axios from "axios"
 
 const Search = () => {
     const [search, setSearch] = useState('');
@@ -20,8 +21,8 @@ const Search = () => {
         setLoading(true);
 
         try {
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${search}`);
-            const results = await response.json();
+            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search}`);
+            const results = await response.data
             console.log(results);
             setPokemon(results);
             setLoading(false);
@@ -51,7 +52,7 @@ const Search = () => {
             {!loading && pokemon ? (
                 <PokemonData
                     name={pokemon.name}
-                    sprite={pokemon.sprites.front_default}
+                    sprite={pokemon.sprites.other["official-artwork"].front_default}
                     abilities={pokemon.abilities}
                     stats={pokemon.stats}
                     types={pokemon.types} />
