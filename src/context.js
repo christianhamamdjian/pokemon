@@ -28,9 +28,9 @@ const AppProvider = ({ children }) => {
         }
     }
 
-    useEffect(() => {
-        fetchPokemons(`${API_ENDPOINT}&s=${query}`)
-    }, [query])
+    // useEffect(() => {
+    //     fetchPokemons(`${API_ENDPOINT}&s=${query}`)
+    // }, [query])
 
     return (
         <AppContext.Provider
