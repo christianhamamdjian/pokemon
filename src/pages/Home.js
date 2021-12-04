@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import logo from '../assets/pokeapi_logo.png'
 import PokemonList from '../components/PokemonList'
 import Search from '../components/Search'
@@ -11,7 +11,7 @@ const Home = () => {
     const url = `https://pokeapi.co/api/v2/pokemon-species/?limit=0`
     const [loading, setLoading] = useState(false)
 
-    const getaAllPokemons = async (url) => {
+    const getaAllPokemons = useCallback(async (url) => {
         try {
             setLoading(true)
             let cancel
@@ -34,8 +34,7 @@ const Home = () => {
         } catch (error) {
             console.log(error)
         }
-    }
-
+    }, [counter, pokemons])
     useEffect(() => {
         getaAllPokemons(url)
     }, [])
