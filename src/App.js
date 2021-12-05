@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css';
 import Home from './pages/Home';
 import SinglePokemon from './pages/SinglePokemon';
 import {
@@ -10,7 +9,7 @@ import {
 function App() {
 
   return (
-    <div className="App">
+    <div className="app">
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/pokemon/:id' element={<SinglePokemon />} />

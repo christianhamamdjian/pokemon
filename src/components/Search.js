@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import PokemonData from '../components/PokemonData'
 import Modal from '../components/Modal'
-import axios from "axios"
+import { API_ENDPOINT as url } from '../context'
 
 const Search = () => {
     const [search, setSearch] = useState('');
@@ -10,6 +9,8 @@ const Search = () => {
     const [error, setError] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const controller = new AbortController()
+    const signal = controller.signal
 
     const getPokemon = async (e) => {
         e.preventDefault()
@@ -25,18 +26,24 @@ const Search = () => {
         setLoading(true);
 
         try {
-            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search}`);
-            const results = await response.data
+            const response = await fetch(`${url}${search}`, { signal });
+            const results = await response.json()
             openModal()
             setPokemon(results);
             setLoading(false);
+            setSearch('')
+            return () => controller.abort();
         } catch (err) {
             console.log(err);
             setLoading(false);
             setError(true);
-            setErrorMsg('Pokemon not found.');
+            setErrorMsg('Pokémon not found.');
         }
     }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
     return (
         <>
             {error ? (<div>{errorMsg}</div>) : null}
@@ -50,18 +57,9 @@ const Search = () => {
                 />
                 <button className="btn" onClick={getPokemon}>Search</button>
             </form>
-            <Modal />
+            <Modal isModalOpen={isModalOpen} closeModal={closeModal} pokemon={pokemon} loading={loading} />
             {loading ? (
                 <div>Loading...</div>
-            ) : null}
-            {!loading && pokemon ? (
-
-                <PokemonData
-                    name={pokemon.name}
-                    sprite={pokemon.sprites.other["official-artwork"].front_default}
-                    abilities={pokemon.abilities}
-                    stats={pokemon.stats}
-                    types={pokemon.types} />
             ) : null}
         </>
     )
