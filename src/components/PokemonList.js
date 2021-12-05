@@ -26,9 +26,9 @@ const PokemonList = ({ pagePokemons }) => {
         createPokemonList(pagePokemons)
     }, [])
 
-    if (loading) {
-        return <div className='loading'></div>
-    }
+    // if (loading) {
+    //     return <div className='loading'></div>
+    // }
 
     return (
         <>
