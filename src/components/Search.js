@@ -4,7 +4,7 @@ import { API_ENDPOINT_2 as url } from '../context'
 
 const Search = () => {
     const [search, setSearch] = useState('');
-    const [pokemon, setPokemon] = useState();
+    const [pokemon, setPokemon] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
@@ -27,9 +27,9 @@ const Search = () => {
 
         try {
             const response = await fetch(`${url}${search}`, { signal });
-            const results = await response.json()
+            const data = await response.json()
             openModal()
-            setPokemon(results);
+            setPokemon(data);
             setLoading(false);
             setSearch('')
             return () => controller.abort();
@@ -37,6 +37,7 @@ const Search = () => {
             console.log(err);
             setLoading(false);
             setError(true);
+            setSearch('')
             setErrorMsg('Pokémon not found.');
         }
     }
@@ -46,24 +47,22 @@ const Search = () => {
     };
     return (
         <>
-            {error ? (<div>{errorMsg}</div>) : null}
             <form className='search-form'>
                 <input
                     type='text'
                     className='form-input'
                     placeholder="Search for Pokemon"
                     value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    onChange={(e) => setSearch(e.target.value.trim().toLowerCase())}
                 />
                 <button className="btn" onClick={getPokemon}>Search</button>
             </form>
-
+            {error ? (<div className="error">{errorMsg}</div>) : null}
             {loading ? (
                 <div className='loading'></div>
             ) : null}
 
             <Modal isModalOpen={isModalOpen} closeModal={closeModal} pokemon={pokemon} loading={loading} />
-
         </>
     )
 }

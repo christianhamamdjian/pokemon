@@ -190,6 +190,7 @@ Search
   color: var(--clr-red-dark);
   text-transform: capitalize;
   padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   letter-spacing: var(--spacing);
 }
 
@@ -268,7 +269,7 @@ Single Pokemon
 */
 
 .single-pokemon {
-  width: 60vw;
+  width: 80vw;
   max-width: var(--max-width);
   margin: 4rem auto;
   display: flex;
@@ -356,8 +357,10 @@ Modal
   position: absolute;
   top: 1rem;
   right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
   font-size: 2rem;
-  background: transparent;
+  background: #000;
   border-color: transparent;
   color: var(--clr-white);
   cursor: pointer;

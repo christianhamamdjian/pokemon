@@ -9,10 +9,14 @@ const SinglePokemon = () => {
   const [loading, setLoading] = useState(true)
 
   const fetchPokemon = async (url) => {
-    const response = await fetch(url)
-    const data = await response.json()
-    setPokemon(data)
-    setLoading(false)
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+      setPokemon(data)
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {
