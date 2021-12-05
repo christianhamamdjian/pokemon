@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import PokemonCard from '../components/PokemonCard'
-import axios from 'axios'
+import { API_ENDPOINT_2 as url } from '../context'
+import PropTypes from 'prop-types';
 
 const PokemonList = ({ pagePokemons }) => {
-
     const [allPokemons, setAllPokemons] = useState([])
+    const [loading, setLoading] = useState(true)
+    const controller = new AbortController()
+    const signal = controller.signal
 
-    function createPokemonObject(pagePokemons) {
-        pagePokemons.forEach(async pokemon => {
+    const createPokemonList = async (pagePokemons) => {
+        pagePokemons.forEach(async (pokemon) => {
             try {
-                const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-                const data = await res.data
+                const res = await fetch(`${url}${pokemon}`, { signal })
+                const data = await res.json()
                 setAllPokemons(list => [...list, data])
+                setLoading(false)
+                return () => controller.abort();
             } catch (error) {
                 console.log(error)
             }
@@ -19,17 +24,25 @@ const PokemonList = ({ pagePokemons }) => {
     }
 
     useEffect(() => {
-        createPokemonObject(pagePokemons)
+        createPokemonList(pagePokemons)
     }, [])
+
+    if (loading) {
+        return <div className='loading'></div>
+    }
 
     return (
         <>
-            <h1>Pokemon list</h1>
+            {loading ? (
+                <div className='loading'></div>
+            ) : null}
+            <h1 className="title">Random Pokémon list</h1>
             <section className="pokemons">
                 {allPokemons.map((pokemon, index) => {
                     return (
                         <PokemonCard key={index}
                             id={pokemon.id}
+                            loading={loading}
                             image={pokemon.sprites.other["official-artwork"].front_default}
                             name={pokemon.name}
                             type={pokemon.types[0].type.name}
@@ -39,6 +52,10 @@ const PokemonList = ({ pagePokemons }) => {
             </section>
         </>
     )
+}
+
+PokemonList.propTypes = {
+    pagePokemons: PropTypes.object.isRequired,
 }
 
 export default PokemonList

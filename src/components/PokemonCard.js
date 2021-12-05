@@ -1,21 +1,31 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 
-const PokemonCard = (props) => {
-
+const PokemonCard = ({ id, image, name, loading }) => {
+    if (loading) {
+        return <div className='loading'></div>
+    }
     return (
-        <><div key={props.id}>
-            <Link to={`/pokemon/${props.id}`} className='pokemon'>
-                <article>
-                    <img src={props.image} alt={props.name} />
-                    <div className='pokemon-info'>
-                        <h4 className='title'>{props.name}</h4>
-                    </div>
-                </article>
-            </Link>
-        </div>
+        <>
+            <div className='pokemon' key={id}>
+                <Link to={`/pokemon/${id}`} >
+                    <article>
+                        <img src={image} alt={name} />
+                        <div className='pokemon-info'>
+                            <h4 className='title'>{name}</h4>
+                        </div>
+                    </article>
+                </Link>
+            </div>
         </>
     )
 }
+
+PokemonCard.propTypes = {
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+};
 
 export default PokemonCard

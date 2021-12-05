@@ -60,7 +60,7 @@ Global Styles
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background: var(--clr-grey-10);
+  background-color: #282c34;
   color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;
@@ -116,10 +116,39 @@ p {
   h2,
   h3,
   h4 {
-    line-height: 1;
+    line-height: 2;
   }
 }
+
 /*  global classes */
+
+.app {
+  text-align: center;
+  background-color: coral;
+}
+
+.logo {
+  height: 15vmin;
+  margin-top: 2rem;
+  pointer-events: none;
+}
+
+.header {
+  background-color: #282c34;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.title {
+  color: white;
+}
+.link {
+  color: #61dafb;
+}
 
 /* section */
 .section {
@@ -142,8 +171,8 @@ Search
   width: 90vw;
   max-width: var(--max-width);
   margin: 0 auto;
-  margin-top: 5rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 .form-input {
   width: 100%;
@@ -161,8 +190,10 @@ Search
   color: var(--clr-red-dark);
   text-transform: capitalize;
   padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   letter-spacing: var(--spacing);
 }
+
 /*
 =============== 
 Loading
@@ -180,6 +211,7 @@ Loading
   height: 6rem;
   margin: 0 auto;
   margin-top: 10rem;
+  margin-bottom: 10rem;
   border-radius: 50%;
   border: 3px solid #ccc;
   border-top-color: var(--clr-primary-5);
@@ -188,7 +220,7 @@ Loading
 
 /*
 =============== 
-Movies
+Pokemons
 ===============
 */
 .pokemons {
@@ -198,39 +230,57 @@ Movies
   gap: 2rem;
   margin: 0 auto;
   padding-bottom: 5rem;
-  padding-top: 3rem;
+  padding: 3rem;
+  background-color: #354c7a;
+  border-radius: 12px;
 }
 .pokemon {
   position: relative;
   overflow: hidden;
+  background-color: hsl(205, 72%, 37%);
+  border-radius: 6px;
+}
+.pokemon:hover {
+  position: relative;
+  overflow: hidden;
+  background-color: hsl(205, 75%, 19%);
+  border-radius: 6px;
+}
+.pokemon h4 {
+  color: #acb7ce;
 }
 .pokemon img {
-  width: 300px;
+  width: 200px;
   height: auto;
   display: block;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 576px) {
   .pokemons {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   }
 }
 
 /*
 =============== 
-Single Movie
+Single Pokemon
 ===============
 */
 
 .single-pokemon {
-  width: 90vw;
+  width: 80vw;
   max-width: var(--max-width);
   margin: 4rem auto;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
+  padding: 2rem;
+  color: #fff;
+  text-transform: capitalize;
 }
 .single-pokemon img {
-  width: 100%;
+  width: 80%;
   display: block;
 }
 .single-pokemon p {
@@ -238,6 +288,10 @@ Single Movie
   font-size: 1.2rem;
   margin-top: 1.5rem;
   line-height: 1.8;
+}
+.pokemon-stats {
+  text-align: left;
+  line-height: 2rem;
 }
 .btn {
   text-transform: capitalize;
@@ -255,6 +309,11 @@ Single Movie
     grid-template-columns: 1fr 2fr;
   }
 }
+/*
+=============== 
+Pokemon Data
+===============
+*/
 
 /*
 =============== 
@@ -280,23 +339,29 @@ Modal
   z-index: 10;
 }
 .modal-container {
-  background: var(--clr-white);
-  border-radius: var(--radius);
-  width: 90vw;
-  height: 30vh;
-  max-width: var(--fixed-width);
+  background: var(--clr-primary-2);
+  width: 60vw;
+  height: 80vh;
+  max-width: 80vw;
   text-align: center;
   display: grid;
   place-items: center;
   position: relative;
+  font-size: medium;
+  border-radius: 12px;
+  overflow-y: scroll;
+  padding-left: 3rem;
 }
+
 .close-modal-btn {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
   font-size: 2rem;
-  background: transparent;
+  background: #000;
   border-color: transparent;
-  color: var(--clr-red-dark);
+  color: var(--clr-white);
   cursor: pointer;
 }
