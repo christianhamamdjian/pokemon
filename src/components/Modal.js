@@ -1,15 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PokemonData from '../components/PokemonData'
 
+
 const Modal = ({ isModalOpen, closeModal, pokemon, loading }) => {
-    if (loading) {
-        return <div className='loading'></div>
-    }
+
     return (
         <div
             className={`${isModalOpen ? 'modal-overlay show-modal' : 'modal-overlay'
                 }`}
         >
+            {loading ? (
+                <div className='loading'></div>
+            ) : null}
             <div className='modal-container'>
                 <button className='close-modal-btn' onClick={closeModal}>
                     X
@@ -27,5 +30,12 @@ const Modal = ({ isModalOpen, closeModal, pokemon, loading }) => {
         </div>
     );
 };
+
+Modal.propTypes = {
+    pokemon: PropTypes.object.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    isModalOpen: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired,
+}
 
 export default Modal;

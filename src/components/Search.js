@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Modal from '../components/Modal'
-import { API_ENDPOINT as url } from '../context'
+import { API_ENDPOINT_2 as url } from '../context'
 
 const Search = () => {
     const [search, setSearch] = useState('');
@@ -57,10 +57,13 @@ const Search = () => {
                 />
                 <button className="btn" onClick={getPokemon}>Search</button>
             </form>
-            <Modal isModalOpen={isModalOpen} closeModal={closeModal} pokemon={pokemon} loading={loading} />
+
             {loading ? (
-                <div>Loading...</div>
+                <div className='loading'></div>
             ) : null}
+
+            <Modal isModalOpen={isModalOpen} closeModal={closeModal} pokemon={pokemon} loading={loading} />
+
         </>
     )
 }

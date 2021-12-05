@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import PokemonData from '../components/PokemonData'
-import { API_ENDPOINT as url } from '../context'
+import { API_ENDPOINT_2 as url } from '../context'
 
 const SinglePokemon = () => {
   const { id } = useParams()

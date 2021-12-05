@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react'
 import logo from '../assets/pokeapi_logo.png'
 import PokemonList from '../components/PokemonList'
 import Search from '../components/Search'
-import { API_ENDPOINT as url } from '../context'
+import { API_ENDPOINT_1 as url } from '../context'
 
 const Home = () => {
     const [pokemons, setPokemons] = useState([])
-    const [counter, setCounter] = useState([])
+    const [counter, setCounter] = useState(0)
     const [pagePokemons, setPagePokemons] = useState([])
     const [loading, setLoading] = useState(false)
     const controller = new AbortController()
     const signal = controller.signal
 
-    const getaAllPokemons = async (url) => {
+    const getAllPokemons = async (url) => {
         try {
             setLoading(true)
             const res = await fetch(url, { signal })
@@ -22,10 +22,8 @@ const Home = () => {
                 length: count
             }, () => Math.floor(Math.random() * count));
             setPokemons(randomArray)
-            if (pokemons) {
-                setCounter(counter => counter + 20)
-            }
             const pageCount = randomArray.slice(counter, counter + 20)
+            setCounter(counter => counter + 20)
             setPagePokemons(pageCount)
             setLoading(false)
             return () => controller.abort();
@@ -34,11 +32,11 @@ const Home = () => {
         }
     }
     useEffect(() => {
-        getaAllPokemons(url)
+        getAllPokemons(url)
     }, [])
 
     if (loading) {
-        return 'Loading...'
+        return <div className='loading'></div>
     }
 
     return (
