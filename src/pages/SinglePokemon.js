@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import PokemonData from '../components/PokemonData'
 import { API_ENDPOINT_2 as url } from '../context'
+import { useGlobalContext } from '../context'
 
 const SinglePokemon = () => {
+  const { nextPage } = useGlobalContext()
   const { id } = useParams()
   const [pokemon, setPokemon] = useState({})
   const [loading, setLoading] = useState(true)
@@ -29,7 +31,7 @@ const SinglePokemon = () => {
 
   return (
     <section>
-      <Link to='/' className='btn'>
+      <Link onClick={nextPage} to='/' className='btn'>
         back to grid
       </Link>
       <PokemonData
@@ -37,7 +39,8 @@ const SinglePokemon = () => {
         sprite={pokemon.sprites.other["official-artwork"].front_default}
         abilities={pokemon.abilities}
         stats={pokemon.stats}
-        types={pokemon.types} />
+        types={pokemon.types}
+        loading={loading} />
     </section >
   )
 }
