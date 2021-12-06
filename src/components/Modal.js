@@ -32,7 +32,7 @@ const Modal = ({ isModalOpen, closeModal, pokemon, loading }) => {
 };
 
 Modal.propTypes = {
-    pokemon: PropTypes.object.isRequired,
+    pokemon: PropTypes.object,
     closeModal: PropTypes.func.isRequired,
     isModalOpen: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,

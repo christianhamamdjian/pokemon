@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PokemonData = ({ name, sprite, stats }) => {
+const PokemonData = ({ name, sprite, stats, loading }) => {
+    if (loading) {
+        return <div className='loading'></div>
+    }
     return (
         <section className="single-pokemon">
             <div>
