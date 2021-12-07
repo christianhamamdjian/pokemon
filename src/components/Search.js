@@ -18,7 +18,7 @@ const Search = () => {
             setIsModalOpen(true);
         };
         if (!search) {
-            setErrorMsg('You must enter a Pokemon');
+            setErrorMsg("You must enter a Pokemon\'s name");
             setError(true);
             return;
         }
@@ -58,11 +58,13 @@ const Search = () => {
                 <button className="btn" onClick={getPokemon}>Search</button>
             </form>
             {error ? (<div className="error">{errorMsg}</div>) : null}
-            {loading ? (
-                <div className='loading'></div>
-            ) : null}
 
-            <Modal isModalOpen={isModalOpen} closeModal={closeModal} pokemon={pokemon} loading={loading} />
+            <Modal
+                isModalOpen={isModalOpen}
+                closeModal={closeModal}
+                pokemon={pokemon}
+                loading={loading}
+            />
         </>
     )
 }

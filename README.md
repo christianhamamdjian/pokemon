@@ -1,8 +1,8 @@
 <img src='./public/pokeapi_logo.png'>
 
-# Pokémon
+# Random Pokémon Grid
 
-### Random browse and search
+### Random browsing and search
 
 This application using the Poke API to fetch the data.
 We could type the keywords or just browse the random grid and click a thumbnail in order to get the pokémon's info.
