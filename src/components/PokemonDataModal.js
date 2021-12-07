@@ -2,20 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PokemonData = ({ name, sprite, stats, loading, type }) => {
-    const style = type + " single-pokemon";
+    const style = type + " data-modal";
     if (loading) {
         return <div className='loading'></div>
     }
     return (
         <div className={style}>
-            <div>
-                <h1>{name}</h1>
-                <img src={sprite} alt={name} />
-            </div>
-            <div className="pokemon-stats">
-                <h3>Type: {type}</h3>
-                <br />
-                <h3>Base Stats</h3>
+            <h1>{name}</h1>
+            <img src={sprite} alt={name} />
+            <h3>Type: {type}</h3>
+            <br />
+            <div className="pokemon-stats-modal">
+                <h4>Base Stats</h4>
                 {stats.map((stat, index) => (
                     <div key={index}>
                         <div className="progress">

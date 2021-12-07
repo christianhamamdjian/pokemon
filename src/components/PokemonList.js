@@ -13,7 +13,7 @@ const PokemonList = () => {
     // console.log(pokemons[page])
     // console.log(pagePokemons)
     const createPokemonArray = (pagePokemons) => {
-        pagePokemons.map(async (pokemon) => {
+        pagePokemons.forEach(async (pokemon) => {
             try {
                 const res = await fetch(`${url}${pokemon}`, { signal })
                 const data = await res.json()
@@ -36,20 +36,25 @@ const PokemonList = () => {
 
     return (
         <>
-            <h1 className="title">Random Pokémon list</h1>
-            <section className="pokemons">
-                {pagePokemonArray.map((pokemon, index) => {
-                    return (
-                        <PokemonCard key={index}
-                            id={pokemon.id}
-                            loading={loading}
-                            image={pokemon.sprites.other["official-artwork"].front_default}
-                            name={pokemon.name}
-                            type={pokemon.types[0].type.name}
-                        />
-                    )
-                })}
-            </section>
+            <div className="pokemons">
+                <div className="grid-container">
+                    <div className="pokemon-container">
+                        <div className="all-container">
+                            {pagePokemonArray.map((pokemon, index) => {
+                                return (
+                                    <PokemonCard key={index}
+                                        id={pokemon.id}
+                                        loading={loading}
+                                        image={pokemon.sprites.other["official-artwork"].front_default}
+                                        name={pokemon.name}
+                                        type={pokemon.types[0].type.name}
+                                    />
+                                )
+                            })}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

@@ -9,6 +9,7 @@ const Home = () => {
         <>
             <header className="header">
                 <img src={logo} className="logo" alt="logo" />
+                <h1>Random Pokémon grid</h1>
                 <Search />
             </header>
             < PokemonList />

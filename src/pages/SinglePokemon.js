@@ -28,20 +28,22 @@ const SinglePokemon = () => {
   if (loading) {
     return <div className='loading'></div>
   }
-
+  const style = pokemon.types[0].type.name + " single-pokemon";
   return (
-    <section>
+    <div className={style}>
       <Link onClick={nextPage} to='/' className='btn'>
         back to grid
       </Link>
-      <PokemonData
-        name={pokemon.name}
-        sprite={pokemon.sprites.other["official-artwork"].front_default}
-        abilities={pokemon.abilities}
-        stats={pokemon.stats}
-        types={pokemon.types}
-        loading={loading} />
-    </section >
+      {!loading && pokemon ? (
+        <PokemonData
+          name={pokemon.name}
+          sprite={pokemon.sprites.other["official-artwork"].front_default}
+          abilities={pokemon.abilities}
+          stats={pokemon.stats}
+          type={pokemon.types[0].type.name}
+          loading={loading} />
+      ) : null}
+    </div >
   )
 }
 

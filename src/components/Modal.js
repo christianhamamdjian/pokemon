@@ -1,29 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PokemonData from '../components/PokemonData'
-
+import PokemonDataModal from '../components/PokemonDataModal'
 
 const Modal = ({ isModalOpen, closeModal, pokemon, loading }) => {
 
+    if (loading) {
+        return <div className='loading'></div>
+    }
     return (
-        <div
-            className={`${isModalOpen ? 'modal-overlay show-modal' : 'modal-overlay'
-                }`}
-        >
-            {loading ? (
-                <div className='loading'></div>
-            ) : null}
-            <div className='modal-container'>
+        <div className={`${isModalOpen ? 'modal-overlay show-modal' : 'modal-overlay'}`} >
+            <div className="modal-container">
                 <button className='close-modal-btn' onClick={closeModal}>
-                    X
+                    &times;
                 </button>
                 {!loading && pokemon ? (
-                    <PokemonData
+                    <PokemonDataModal
                         name={pokemon.name}
                         sprite={pokemon.sprites.other["official-artwork"].front_default}
                         abilities={pokemon.abilities}
                         stats={pokemon.stats}
-                        types={pokemon.types} />
+                        type={pokemon.types[0].type.name} />
                 ) : null}
 
             </div>
