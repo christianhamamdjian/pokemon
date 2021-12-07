@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PokemonData = ({ name, sprite, stats, loading, type }) => {
+const PokemonData = ({ id, name, sprite, stats, loading, type }) => {
     const style = type + " single-pokemon";
     if (loading) {
         return <div className='loading'></div>
@@ -10,6 +10,7 @@ const PokemonData = ({ name, sprite, stats, loading, type }) => {
         <div className={style}>
             <div>
                 <h1>{name}</h1>
+                <h3>#0{id}</h3>
                 <img src={sprite} alt={name} />
             </div>
             <div className="pokemon-stats">

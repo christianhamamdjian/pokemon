@@ -36,6 +36,7 @@ const SinglePokemon = () => {
       </Link>
       {!loading && pokemon ? (
         <PokemonData
+          id={id}
           name={pokemon.name}
           sprite={pokemon.sprites.other["official-artwork"].front_default}
           abilities={pokemon.abilities}
