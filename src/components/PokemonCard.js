@@ -15,6 +15,7 @@ const PokemonCard = ({ id, image, name, loading, type }) => {
                         <img src={image} alt={name} />
                         <div className="detail-wrapper">
                             <h3>{name}</h3>
+                            <small>#0{id}</small>
                             <small>Type: {type}</small>
                         </div>
                     </article>

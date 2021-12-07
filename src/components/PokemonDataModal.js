@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PokemonData = ({ name, sprite, stats, loading, type }) => {
+const PokemonData = ({ id, name, sprite, stats, loading, type }) => {
     const style = type + " data-modal";
     if (loading) {
         return <div className='loading'></div>

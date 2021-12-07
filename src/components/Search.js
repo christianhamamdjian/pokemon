@@ -9,6 +9,7 @@ const Search = () => {
     const [error, setError] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(false)
     const controller = new AbortController()
     const signal = controller.signal
 
@@ -18,6 +19,8 @@ const Search = () => {
             setIsModalOpen(true);
         };
         if (!search) {
+            setIsVisible(true)
+            setTimer('3000')
             setErrorMsg("You must enter a Pokemon\'s name");
             setError(true);
             return;
@@ -35,6 +38,8 @@ const Search = () => {
             return () => controller.abort();
         } catch (err) {
             console.log(err);
+            setIsVisible(true)
+            setTimer('3000')
             setLoading(false);
             setError(true);
             setSearch('')
@@ -45,6 +50,9 @@ const Search = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     };
+    const setTimer = (delay) => {
+        setTimeout(() => setIsVisible(false), +delay);
+    }
     return (
         <>
             <form className='search-form'>
@@ -57,7 +65,7 @@ const Search = () => {
                 />
                 <button className="btn" onClick={getPokemon}>Search</button>
             </form>
-            {error ? (<div className="error">{errorMsg}</div>) : null}
+            {error && isVisible ? (<div className="error">{errorMsg}</div>) : null}
 
             <Modal
                 isModalOpen={isModalOpen}
