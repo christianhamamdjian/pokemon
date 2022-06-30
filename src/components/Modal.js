@@ -8,7 +8,7 @@ const Modal = ({ isModalOpen, closeModal, pokemon, loading }) => {
         return <div className='loading'></div>
     }
     return (
-        <div className={`${isModalOpen ? 'modal-overlay show-modal' : 'modal-overlay'}`} >
+        <div className={`${isModalOpen ? 'modal-overlay show-modal' : 'modal-overlay'}`} onClick={closeModal}>
             <div className="modal-container">
                 <button className='close-modal-btn' onClick={closeModal}>
                     &times;
