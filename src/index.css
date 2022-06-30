@@ -58,6 +58,7 @@ Global Styles
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -66,12 +67,15 @@ body {
   line-height: 1.5;
   font-size: 0.875rem;
 }
+
 ul {
   list-style-type: none;
 }
+
 a {
   text-decoration: none;
 }
+
 h1,
 h2,
 h3,
@@ -81,38 +85,49 @@ h4 {
   line-height: 1.25;
   margin-bottom: 0.75rem;
 }
+
 h1 {
   font-size: 2.5rem;
 }
+
 h2 {
   font-size: 2rem;
 }
+
 h3 {
   font-size: 1.25rem;
 }
+
 h4 {
   font-size: 0.875rem;
 }
+
 p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-3);
 }
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 3rem;
   }
+
   h2 {
     font-size: 2.5rem;
   }
+
   h3 {
     font-size: 1.75rem;
   }
+
   h4 {
     font-size: 1rem;
   }
+
   body {
     font-size: 1rem;
   }
+
   h1,
   h2,
   h3,
@@ -143,9 +158,11 @@ p {
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 .title {
   color: white;
 }
+
 .link {
   color: #61dafb;
 }
@@ -162,6 +179,7 @@ p {
     width: 95vw;
   }
 }
+
 /*
 =============== 
 Search
@@ -174,25 +192,40 @@ Search
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
+
+::placeholder {
+  font-size: .8rem;
+}
+
 .form-input {
   width: 100%;
   border: transparent;
   max-width: 600px;
   background: var(--clr-white);
   padding: 0.4rem;
+  padding-left: 1rem;
   font-size: 1rem;
   border-radius: var(--radius);
   color: var(--clr-grey-3);
   letter-spacing: var(--spacing);
   margin-top: 1rem;
 }
+
 .error {
-  color: var(--clr-red-dark);
+  color: var(--clr-red-light);
   text-transform: capitalize;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   letter-spacing: var(--spacing);
   font-size: 1rem;
+  height: 40px;
+  visibility: hidden;
+  transition: visibility 0.3s linear, opacity 0.3s linear;
+}
+
+.error-visible {
+  visibility: visible;
+  opacity: 1;
 }
 
 /*
@@ -225,30 +258,34 @@ Pokemons
 ===============
 */
 .pokemons {
-  width: 90vw;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 2rem;
   background-color: #ffffff;
 }
+
 .pokemon {
   position: relative;
   height: 240px;
   background-color: hsl(205, 72%, 37%);
   border-radius: 6px;
 }
+
 .pokemon-image {
   height: 200px;
 }
+
 .pokemon:hover {
   position: relative;
   overflow: hidden;
   background-color: var(--clr-primary-9);
   border-radius: 6px;
 }
+
 .pokemon h4 {
   color: #acb7ce;
 }
+
 .pokemon img {
   width: 200px;
   height: auto;
@@ -259,6 +296,7 @@ Pokemons
 .progress {
   text-transform: uppercase;
 }
+
 @media screen and (min-width: 576px) {
   .pokemons {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -283,33 +321,44 @@ Single Pokemon
   background: transparent;
   border-radius: 6px;
 }
+
 .single-pokemon img {
   width: 80%;
   display: block;
   margin: 0 auto;
 }
+
 .single-pokemon p {
   max-width: 35em;
   font-size: 1.2rem;
   margin-top: 1.5rem;
   line-height: 1.8;
 }
+
+.pokemon-info {
+  padding: 1rem;
+}
+
 .pokemon-stats {
   text-align: left;
   line-height: 2rem;
   margin: 0 auto;
+  padding: 1rem;
 }
+
 .btn {
   text-transform: capitalize;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.7rem;
   background: var(--clr-primary-5);
   color: var(--clr-white);
+  border: 0;
   border-radius: var(--radius);
   display: inline-block;
   margin: 0.5rem;
   letter-spacing: var(--spacing);
   cursor: pointer;
 }
+
 @media screen and (min-width: 992px) {
   .single-pokemon {
     grid-template-columns: 1fr 2fr;
@@ -334,11 +383,13 @@ Modal
   visibility: hidden;
   z-index: -1;
 }
+
 /* OPEN/CLOSE MODAL */
 .show-modal {
   visibility: visible;
   z-index: 10;
 }
+
 .modal-container {
   background: var(--clr-primary-2);
   width: 60vw;
@@ -353,6 +404,7 @@ Modal
   overflow-y: scroll;
   color: var(--clr-grey-9);
 }
+
 .close-modal-btn {
   position: absolute;
   top: 1rem;
@@ -365,12 +417,14 @@ Modal
   color: var(--clr-white);
   cursor: pointer;
 }
+
 .pokemon-stats-modal {
   text-align: left;
   line-height: 2rem;
   width: 60%;
   margin: 0 auto;
 }
+
 .data-modal {
   padding: 2rem;
   width: 100%;
@@ -389,12 +443,14 @@ Pokemons grid
   min-height: 100vh;
   padding: 0.5rem 0.5rem;
 }
+
 .pokemon-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .all-container {
   display: flex;
   flex-wrap: wrap;
@@ -404,57 +460,92 @@ Pokemons grid
 
 .normal {
   background-color: #6d6d4e;
+  background-color: rgba(109, 109, 78, 0.6);
 }
+
 .fighting {
   background-color: #7d1f1a;
+  background-color: rgba(125, 31, 26, 0.6);
 }
+
 .flying {
   background-color: #6d5e9c;
+  background-color: rgba(109, 94, 156, 0.6);
 }
+
 .poison {
   background-color: #682a68;
+  background-color: rgba(104, 42, 104, 0.6);
 }
+
 .ground {
   background-color: #927d44;
+  background-color: rgba(146, 125, 68, 0.6);
 }
+
 .rock {
   background-color: #786824;
+  background-color: rgba(120, 104, 36, 0.6);
 }
+
 .bug {
   background-color: #6d7815;
+  background-color: rgba(109, 120, 21, 0.6);
 }
+
 .ghost {
   background-color: #493963;
+  background-color: rgba(73, 57, 99, 0.6);
 }
+
 .steel {
   background-color: #787887;
+  background-color: rgba(120, 120, 135, 0.6);
 }
+
 .fire {
   background-color: #9c531f;
+  background-color: rgba(156, 83, 31, 0.6);
 }
+
 .water {
   background-color: #445e9c;
+  background-color: rgba(68, 94, 156, 0.6);
 }
+
 .grass {
   background-color: #4e8234;
+  background-color: rgba(78, 130, 52, 0.6);
 }
+
 .electric {
   background-color: #a1871f;
+  background-color: rgba(161, 135, 31, 0.6);
 }
+
 .psychic {
   background-color: #a13959;
+  background-color: rgba(161, 57, 89, 0.6);
 }
+
 .ice {
   background-color: #638d8d;
+  background-color: rgba(99, 141, 141, 0.6);
 }
+
 .dragon {
   background-color: #4924a1;
+  background-color: rgba(73, 36, 161, 0.6);
 }
+
 .dark {
   background-color: #49392f;
+  background-color: rgba(73, 57, 47, 0.6);
 }
+
 .fairy {
   background-color: #9b6470;
+  background-color: rgba(155, 100, 112, 0.6);
 }
 
 .thumb-container {
@@ -473,29 +564,36 @@ Pokemons grid
   color: var(--clr-grey-9);
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.089);
 }
+
 .thumb-container:hover {
   background-color: var(--clr-primary-6);
 
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0);
 }
+
 .thumb-container h3 {
   line-height: 1;
 }
+
 .thumb-container img {
   width: 120px;
   height: 120px;
 }
+
 .thumb-container a {
   color: var(--clr-grey-5);
 }
+
 .thumb-container small {
   text-transform: capitalize;
 }
+
 .detail-wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 .detail-wrapper button {
   color: rgb(22, 22, 22);
   padding: 0.5rem;

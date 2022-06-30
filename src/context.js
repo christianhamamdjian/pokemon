@@ -53,6 +53,7 @@ const AppProvider = ({ children }) => {
 
     useEffect(() => {
         getAllPokemons(API_ENDPOINT_1)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const nextPage = () => {

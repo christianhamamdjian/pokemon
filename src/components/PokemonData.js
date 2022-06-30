@@ -8,7 +8,7 @@ const PokemonData = ({ id, name, sprite, stats, loading, type }) => {
     }
     return (
         <div className={style}>
-            <div>
+            <div className='pokemon-info'>
                 <h1>{name}</h1>
                 <h3>#0{id}</h3>
                 <img src={sprite} alt={name} />

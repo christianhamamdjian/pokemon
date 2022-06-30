@@ -21,7 +21,7 @@ const Search = () => {
         if (!search) {
             setIsVisible(true)
             setTimer('3000')
-            setErrorMsg("You must enter a Pokemon\'s name");
+            setErrorMsg("You must enter a Pokémon's name");
             setError(true);
             return;
         }
@@ -59,14 +59,13 @@ const Search = () => {
                 <input
                     type='text'
                     className='form-input'
-                    placeholder="Search for Pokemon"
+                    placeholder="Search Pokémon by name"
                     value={search}
                     onChange={(e) => setSearch(e.target.value.trim().toLowerCase())}
                 />
                 <button className="btn" onClick={getPokemon}>Search</button>
+                <div className={`error ${error && isVisible ? "error-visible" : ""}`}>{errorMsg}</div>
             </form>
-            {error && isVisible ? (<div className="error">{errorMsg}</div>) : null}
-
             <Modal
                 isModalOpen={isModalOpen}
                 closeModal={closeModal}

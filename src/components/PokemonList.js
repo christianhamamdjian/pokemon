@@ -28,6 +28,7 @@ const PokemonList = () => {
         if (pagePokemons) {
             createPokemonArray(pokemons[page] || pagePokemons)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pagePokemons])
 
     if (loading) {
