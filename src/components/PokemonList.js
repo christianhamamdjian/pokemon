@@ -9,9 +9,6 @@ const PokemonList = () => {
     const [pagePokemonArray, setPagePokemonArray] = useState([])
     const controller = new AbortController()
     const signal = controller.signal
-    // console.log(pokemons)
-    // console.log(pokemons[page])
-    // console.log(pagePokemons)
     const createPokemonArray = (pagePokemons) => {
         pagePokemons.forEach(async (pokemon) => {
             try {
