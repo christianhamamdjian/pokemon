@@ -4,8 +4,8 @@
 
 ### Random browsing and search
 
-This application using the Poke API to fetch the data.
-We could type the keywords or just browse the random grid and click a thumbnail in order to get the pokémon's info.
+This application using the [Poke API](https://pokeapi.co) to fetch the data.
+We could enter the Pokémon's name or just browse the random grid and click a thumbnail in order to get the Pokémon's info.
 
 ##### Installing:
 
@@ -15,7 +15,7 @@ npm install
 
 npm start
 
-And you can open http://localhost:3000/ to experience.
+Then open http://localhost:3000/ in your browser to use the app.
 
 #### Built With
 
